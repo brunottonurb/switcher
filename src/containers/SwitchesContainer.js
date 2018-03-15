@@ -1,15 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Switches from '../components/Switches';
 
-const Switches = (props) => {
-  const { switches, onChange, title } = props;
+const SwitchesContainer = (props) => {
+  const { switches } = props;
   return (
     <Switches
       switches={switches}
-      onChange={onChange}
-      title={title}
+      onChange={() => {}}
+      title="steckdose"
     />
   );
 };
 
-export default Switches;
+SwitchesContainer.propTypes = {
+  switches: PropTypes.array.isRequired,
+};
+
+const mapStateToProps = state => ({
+  switches: state.steckdose,
+});
+
+const mapDispatchToProps = dispatch => ({
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SwitchesContainer);

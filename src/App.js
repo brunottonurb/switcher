@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import Switches from './components/Switches';
+import SwitchesContainer from './containers/SwitchesContainer';
 
 class App extends Component {
   render() {
     return (
-      <Switches />
+      <SwitchesContainer />
     );
   }
 }
