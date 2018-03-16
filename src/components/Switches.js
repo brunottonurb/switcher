@@ -1,47 +1,98 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  FormLabel,
   FormControl,
   FormGroup,
   FormControlLabel,
 } from 'material-ui/Form';
-import Button from 'material-ui/Button';
+import Card, { CardContent } from 'material-ui/Card';
+import { withStyles } from 'material-ui/styles';
+import yellow from 'material-ui/colors/yellow';
+import blue from 'material-ui/colors/blue';
+import grey from 'material-ui/colors/grey';
+import red from 'material-ui/colors/red';
 import Switch from 'material-ui/Switch';
+import Typography from 'material-ui/Typography';
+
+const styles = theme => ({
+  card: {
+    margin: 15,
+  },
+  title: {
+    fontSize: 14,
+    color: theme.palette.text.secondary,
+    textTransform: 'uppercase',
+  },
+  yellow: {
+    color: yellow[500],
+    '& + $bar': {
+      backgroundColor: yellow[500],
+    },
+  },
+  blue: {
+    color: blue[500],
+    '& + $bar': {
+      backgroundColor: blue[500],
+    },
+  },
+  red: {
+    color: red[500],
+    '& + $bar': {
+      backgroundColor: red[500],
+    },
+  },
+  grey: {
+    color: grey[300],
+    '& + $bar': {
+      backgroundColor: grey[300],
+    },
+  },
+  bar: {},
+});
 
 const Switches = (props) => {
-  const { switches, onChange, title } = props;
+  const {
+    classes,
+    switches,
+    onChange,
+    title
+  } = props;
+
   return (
-    <FormControl component="fieldset">
-      <FormLabel component="legend">{title}</FormLabel>
-      <FormGroup>
-        {switches.map(s =>
-          (<FormControlLabel
-            control={
-              <Switch
-                checked={s.active}
-                onChange={s.onChange}
-                value={s.id}
-              />
+    <Card className={classes.card}>
+      <CardContent>
+        <Typography className={classes.title}>{title}</Typography>
+        <FormControl component="fieldset">
+          <FormGroup>
+            {switches.map(s =>
+              (<FormControlLabel
+                control={
+                  <Switch
+                    checked={s.state}
+                    onChange={(event, checked) => onChange(s.id, checked)}
+                    value={toString(s.id)}
+                    classes={{
+                      checked: classes[s.color],
+                      bar: classes.bar,
+                    }}
+                  />
+                }
+                key={s.id}
+                label={s.name}
+              />))
             }
-            label={s.name}
-          />))
-        }
-      </FormGroup>
-      <Button variant="raised">
-        All On
-      </Button>
-      <Button variant="raised">
-        All Off
-      </Button>
-    </FormControl>
+          </FormGroup>
+        </FormControl>
+      </CardContent>
+    </Card>
   );
 };
 
 Switches.propTypes = {
+  classes: PropTypes.object.isRequired,
   switches: PropTypes.array.isRequired,
   onChange: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
 };
 
-export default Switches;
+export default withStyles(styles)(Switches);

@@ -6,14 +6,14 @@ import {
 const fiddleState = [
   {
     id: 1,
-    name: 'Grün',
+    name: 'Weiß',
     state: false,
-    color: 'green',
+    color: 'grey',
   },
   {
     id: 2,
     name: 'Blau',
-    state: true,
+    state: false,
     color: 'blue',
   },
   {
@@ -25,7 +25,7 @@ const fiddleState = [
   {
     id: 4,
     name: 'Gelb',
-    state: true,
+    state: false,
     color: 'yellow',
   }
 ];
@@ -33,9 +33,19 @@ const fiddleState = [
 const steckdose = (state = fiddleState, action) => {
   switch (action.type) {
     case TOGGLE_SWITCH:
-      return state;
+      return state.map(s => ({
+        id: s.id,
+        name: s.name,
+        state: s.id === action.id ? action.state : s.state,
+        color: s.color,
+      }));
     case TOGGLE_ALL_SWITCHES:
-      return state;
+      return state.map(s => ({
+        id: s.id,
+        name: s.name,
+        state: action.state,
+        color: s.color,
+      }));
     default:
       return state;
   }
