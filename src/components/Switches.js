@@ -13,10 +13,15 @@ import grey from 'material-ui/colors/grey';
 import red from 'material-ui/colors/red';
 import Switch from 'material-ui/Switch';
 import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
 
 const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit,
+  },
   card: {
-    margin: 15,
+    margin: theme.spacing.unit * 2,
+    maxWidth: 400,
   },
   title: {
     fontSize: 14,
@@ -81,6 +86,14 @@ const Switches = (props) => {
                 label={s.name}
               />))
             }
+            <div>
+              <Button color="primary" variant="raised" className={classes.button}>
+                All On
+              </Button>
+              <Button color="secondary" variant="raised">
+                All Off
+              </Button>
+            </div>
           </FormGroup>
         </FormControl>
       </CardContent>
