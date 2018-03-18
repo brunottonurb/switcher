@@ -1,7 +1,4 @@
-import {
-  TOGGLE_SWITCH,
-  TOGGLE_ALL_SWITCHES,
-} from '../constants';
+import { TOGGLE_SWITCHES } from '../constants';
 
 const fiddleState = [
   {
@@ -32,18 +29,11 @@ const fiddleState = [
 
 const steckdose = (state = fiddleState, action) => {
   switch (action.type) {
-    case TOGGLE_SWITCH:
+    case TOGGLE_SWITCHES:
       return state.map(s => ({
         id: s.id,
         name: s.name,
-        state: s.id === action.id ? action.state : s.state,
-        color: s.color,
-      }));
-    case TOGGLE_ALL_SWITCHES:
-      return state.map(s => ({
-        id: s.id,
-        name: s.name,
-        state: action.state,
+        state: action.ids.includes(s.id) ? action.state : s.state,
         color: s.color,
       }));
     default:
