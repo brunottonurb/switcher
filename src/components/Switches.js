@@ -74,7 +74,7 @@ const Switches = (props) => {
                 control={
                   <Switch
                     checked={s.state}
-                    onChange={(event, checked) => onChange(s.id, checked)}
+                    onChange={(event, checked) => onChange([s.id], checked)}
                     value={toString(s.id)}
                     classes={{
                       checked: classes[s.color],
@@ -87,10 +87,19 @@ const Switches = (props) => {
               />))
             }
             <div>
-              <Button color="primary" variant="raised" className={classes.button}>
+              <Button
+                color="primary"
+                variant="raised"
+                className={classes.button}
+                onClick={() => onChange(switches.map(s => s.id), true)}
+              >
                 All On
               </Button>
-              <Button color="secondary" variant="raised">
+              <Button
+                color="secondary"
+                variant="raised"
+                onClick={() => onChange(switches.map(s => s.id), false)}
+              >
                 All Off
               </Button>
             </div>

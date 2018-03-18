@@ -6,13 +6,12 @@ import { setSwitches } from '../actions';
 
 
 const SwitchesContainer = (props) => {
-  const { switches, onChange, loading } = props;
+  const { switches, onChange } = props;
   return (
     <Switches
       switches={switches}
       title="steckdosen"
       onChange={onChange}
-      loading={loading}
     />
   );
 };
@@ -20,7 +19,6 @@ const SwitchesContainer = (props) => {
 SwitchesContainer.propTypes = {
   switches: PropTypes.array.isRequired,
   onChange: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -29,8 +27,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onChange: (id, state) => {
-    dispatch(setSwitches([id], state));
+  onChange: (ids, state) => {
+    dispatch(setSwitches(ids, state));
   },
 });
 
