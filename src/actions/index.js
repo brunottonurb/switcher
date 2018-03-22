@@ -51,15 +51,11 @@ export function setPower(ids, state) {
           }
           return response.text();
         },
-        // Do not use catch, because that will also catch other exceptions
-        // https://github.com/facebook/react/issues/6895
         (error) => {
           dispatch(showError(error.message));
         }
       )
       .then((response) => {
-        // We can dispatch many times!
-        // Here, we update the app state with the results of the API call.
         dispatch(endLoading());
         if (response) dispatch(setSwitches(ids, state));
       });
@@ -80,14 +76,11 @@ export function getPower() {
           }
           return response.json();
         },
-        // Do not use catch, because that will also catch other exceptions
         (error) => {
           dispatch(showError(error.message));
         }
       )
       .then((json) => {
-        // We can dispatch many times!
-        // Here, we update the app state with the results of the API call.
         dispatch(endLoading());
         if (json) dispatch(setSwitchesState(json));
       });

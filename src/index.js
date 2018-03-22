@@ -13,10 +13,9 @@ import { getPower } from './actions';
 // eslint-disable-next-line no-underscore-dangle
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer, composeEnhancers(
-  applyMiddleware(
-    thunk, // lets us dispatch() functions
-    logger // neat middleware that logs actions
-  )
+  process.env.NODE_ENV === 'production'
+    ? applyMiddleware(thunk)
+    : applyMiddleware(thunk, logger)
 ));
 
 store.dispatch(getPower());

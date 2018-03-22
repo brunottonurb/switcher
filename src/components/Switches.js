@@ -73,7 +73,7 @@ const Switches = (props) => {
               (<FormControlLabel
                 control={
                   <Switch
-                    checked={switches[id] === 1}
+                    checked={switches[id]}
                     onChange={(event, checked) => onChange([id], checked)}
                     value={toString(id)}
                     classes={{

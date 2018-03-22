@@ -5,12 +5,17 @@ const steckdose = (state = {}, action) => {
     case SET_SWITCHES: {
       const newState = { ...state };
       action.ids.forEach((id) => {
-        newState[id] = action.state;
+        newState[id] = !!action.state;
       });
       return newState;
     }
-    case SET_SWITCHES_STATE:
-      return action.state;
+    case SET_SWITCHES_STATE: {
+      const newState = {};
+      Object.keys(action.state).forEach((key) => {
+        newState[key] = !!action.state[key];
+      });
+      return newState;
+    }
     default:
       return state;
   }
