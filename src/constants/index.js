@@ -1,4 +1,5 @@
-export const TOGGLE_SWITCHES = 'TOGGLE_SWITCH';
+export const SET_SWITCHES = 'SET_SWITCHES';
+export const SET_SWITCHES_STATE = 'SET_SWITCHES_STATE';
 export const SHOW_ERROR = 'SHOW_ERROR';
 export const DISMISS_ERROR = 'DISMISS_ERROR';
 export const START_LOADING = 'START_LOADING';

@@ -22,7 +22,6 @@ App.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  switches: state.steckdose,
   loading: state.loading,
 });
 

@@ -28,28 +28,28 @@ const styles = theme => ({
     color: theme.palette.text.secondary,
     textTransform: 'uppercase',
   },
-  yellow: {
-    color: yellow[500],
-    '& + $bar': {
-      backgroundColor: yellow[500],
-    },
-  },
-  blue: {
+  P61: {
     color: blue[500],
     '& + $bar': {
       backgroundColor: blue[500],
     },
   },
-  red: {
+  P62: {
+    color: grey[300],
+    '& + $bar': {
+      backgroundColor: grey[300],
+    },
+  },
+  P63: {
     color: red[500],
     '& + $bar': {
       backgroundColor: red[500],
     },
   },
-  grey: {
-    color: grey[300],
+  P64: {
+    color: yellow[500],
     '& + $bar': {
-      backgroundColor: grey[300],
+      backgroundColor: yellow[500],
     },
   },
   bar: {},
@@ -69,21 +69,21 @@ const Switches = (props) => {
         <Typography className={classes.title}>{title}</Typography>
         <FormControl component="fieldset">
           <FormGroup>
-            {switches.map(s =>
+            {Object.keys(switches).map(id =>
               (<FormControlLabel
                 control={
                   <Switch
-                    checked={s.state}
-                    onChange={(event, checked) => onChange([s.id], checked)}
-                    value={toString(s.id)}
+                    checked={switches[id] === 1}
+                    onChange={(event, checked) => onChange([id], checked)}
+                    value={toString(id)}
                     classes={{
-                      checked: classes[s.color],
+                      checked: classes[id],
                       bar: classes.bar,
                     }}
                   />
                 }
-                key={s.id}
-                label={s.name}
+                key={id}
+                label={id}
               />))
             }
             <div>
@@ -91,14 +91,14 @@ const Switches = (props) => {
                 color="primary"
                 variant="raised"
                 className={classes.button}
-                onClick={() => onChange(switches.map(s => s.id), true)}
+                onClick={() => onChange(Object.keys(switches), true)}
               >
                 All On
               </Button>
               <Button
                 color="secondary"
                 variant="raised"
-                onClick={() => onChange(switches.map(s => s.id), false)}
+                onClick={() => onChange(Object.keys(switches), false)}
               >
                 All Off
               </Button>
@@ -112,7 +112,7 @@ const Switches = (props) => {
 
 Switches.propTypes = {
   classes: PropTypes.object.isRequired,
-  switches: PropTypes.array.isRequired,
+  switches: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
 };

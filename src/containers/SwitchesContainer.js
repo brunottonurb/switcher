@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Switches from '../components/Switches';
-import { setSwitches } from '../actions';
+import { setPower } from '../actions';
 
 
 const SwitchesContainer = (props) => {
@@ -17,7 +17,7 @@ const SwitchesContainer = (props) => {
 };
 
 SwitchesContainer.propTypes = {
-  switches: PropTypes.array.isRequired,
+  switches: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
@@ -28,7 +28,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onChange: (ids, state) => {
-    dispatch(setSwitches(ids, state));
+    dispatch(setPower(ids, state));
   },
 });
 
