@@ -4,6 +4,12 @@ import PropTypes from 'prop-types';
 import Switches from '../components/Switches';
 import { setPower } from '../actions';
 
+const labels = {
+  P61: 'Unused',
+  P62: 'Speakers',
+  P63: 'Beside lamp',
+  P64: 'Lamp near plants',
+};
 
 const SwitchesContainer = (props) => {
   const { switches, onChange } = props;
@@ -12,6 +18,7 @@ const SwitchesContainer = (props) => {
       switches={switches}
       title="steckdosen"
       onChange={onChange}
+      labels={labels}
     />
   );
 };

@@ -28,25 +28,25 @@ const styles = theme => ({
     color: theme.palette.text.secondary,
     textTransform: 'uppercase',
   },
-  P61: {
+  index_0: {
     color: blue[500],
     '& + $bar': {
       backgroundColor: blue[500],
     },
   },
-  P62: {
+  index_1: {
     color: grey[300],
     '& + $bar': {
       backgroundColor: grey[300],
     },
   },
-  P63: {
+  index_2: {
     color: red[500],
     '& + $bar': {
       backgroundColor: red[500],
     },
   },
-  P64: {
+  index_3: {
     color: yellow[500],
     '& + $bar': {
       backgroundColor: yellow[500],
@@ -60,7 +60,8 @@ const Switches = (props) => {
     classes,
     switches,
     onChange,
-    title
+    title,
+    labels,
   } = props;
 
   return (
@@ -69,7 +70,7 @@ const Switches = (props) => {
         <Typography className={classes.title}>{title}</Typography>
         <FormControl component="fieldset">
           <FormGroup>
-            {Object.keys(switches).map(id =>
+            {Object.keys(switches).map((id, index) =>
               (<FormControlLabel
                 control={
                   <Switch
@@ -77,13 +78,13 @@ const Switches = (props) => {
                     onChange={(event, checked) => onChange([id], checked)}
                     value={toString(id)}
                     classes={{
-                      checked: classes[id],
+                      checked: classes[`switch_${index}`],
                       bar: classes.bar,
                     }}
                   />
                 }
                 key={id}
-                label={id}
+                label={labels[id]}
               />))
             }
             <div>
@@ -115,6 +116,7 @@ Switches.propTypes = {
   switches: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  labels: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(Switches);

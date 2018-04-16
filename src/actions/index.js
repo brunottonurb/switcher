@@ -71,7 +71,7 @@ export function getPower() {
       .then(
         (response) => {
           if (response.status !== 200) {
-            dispatch(showError(`Could not set power outlet (Response status ${response.status}`));
+            dispatch(showError(`Could not get power outlet status (Response status ${response.status}`));
             return null;
           }
           return response.json();
