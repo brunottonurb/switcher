@@ -28,25 +28,25 @@ const styles = theme => ({
     color: theme.palette.text.secondary,
     textTransform: 'uppercase',
   },
-  index_0: {
+  switch_0: {
     color: blue[500],
     '& + $bar': {
       backgroundColor: blue[500],
     },
   },
-  index_1: {
+  switch_1: {
     color: grey[300],
     '& + $bar': {
       backgroundColor: grey[300],
     },
   },
-  index_2: {
+  switch_2: {
     color: red[500],
     '& + $bar': {
       backgroundColor: red[500],
     },
   },
-  index_3: {
+  switch_3: {
     color: yellow[500],
     '& + $bar': {
       backgroundColor: yellow[500],
