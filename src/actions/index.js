@@ -40,7 +40,7 @@ export function setPower(ids, state) {
   return (dispatch) => {
     dispatch(startLoading());
     const params = ids.map(id => `${id}=${state ? '1' : '0'}`).join('&');
-    return fetch(`http://hifipi.fritz.box:8080/ippower/setpower?${params}`, {
+    return fetch(`ippower/setpower?${params}`, {
       method: 'GET',
     })
       .then(
@@ -65,7 +65,7 @@ export function setPower(ids, state) {
 export function getPower() {
   return (dispatch) => {
     dispatch(startLoading());
-    return fetch('http://hifipi.fritz.box:8080/ippower/getpower', {
+    return fetch('ippower/getpower', {
       method: 'GET',
     })
       .then(
