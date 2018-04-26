@@ -7,8 +7,8 @@ import { setPower } from '../actions';
 const labels = {
   P61: 'Unused',
   P62: 'Speakers',
-  P63: 'Beside lamp',
-  P64: 'Lamp near plants',
+  P63: 'Bedside lamp',
+  P64: 'Plant lamp',
 };
 
 const SwitchesContainer = (props) => {
