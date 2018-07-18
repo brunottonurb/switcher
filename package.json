@@ -1,6 +1,6 @@
 {
   "name": "switcher",
-  "version": "0.2",
+  "version": "v0.1",
   "private": true,
   "dependencies": {
     "cross-fetch": "^2.1.0",
