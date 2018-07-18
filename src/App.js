@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { LinearProgress } from 'material-ui/Progress';
-import './App.css';
 import SwitchesContainer from './containers/SwitchesContainer';
 import ErrorDisplay from './containers/ErrorDisplay';
 
